@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "970888323023",
+    "firebase_url": "https://flimistan-4ef87.firebaseio.com",
+    "project_id": "flimistan-4ef87",
+    "storage_bucket": "flimistan-4ef87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970888323023:android:a68f5f973d53d93b",
+        "android_client_info": {
+          "package_name": "com.banjara.dixitjain.filmistan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970888323023-v83afath4rhacnb2vrdbih3u8drlivsm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUJmiX6WhhsVkzCzxz_B0pI7boYLWdpkI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970888323023:android:915ee92e65c55b5c",
+        "android_client_info": {
+          "package_name": "com.example.dixitjain.filmistan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970888323023-v83afath4rhacnb2vrdbih3u8drlivsm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUJmiX6WhhsVkzCzxz_B0pI7boYLWdpkI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

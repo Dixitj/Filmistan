@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:nestedScrollingEnabled="true"
+        >
+
+
+        <TextView
+            android:id="@+id/movTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="84dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/overView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="5dp"
+                android:text="@string/overview"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <TextView
+                android:id="@+id/descpText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="8"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="5dp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/overView" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="5dp"
+            android:text="@string/details"
+            android:textColor="#000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movTitle" />
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/durText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="0dp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@+id/dura"
+                app:layout_constraintTop_toBottomOf="@+id/dura" />
+
+            <TextView
+                android:id="@+id/dura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/duration"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/durText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/postImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/todo"
+                android:src="@mipmap/ic_launcher"
+                android:transitionName="moveImg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/releasedate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="0dp"
+                app:layout_constraintStart_toEndOf="@+id/postImage"
+                app:layout_constraintTop_toBottomOf="@+id/release" />
+
+            <TextView
+                android:id="@+id/release"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/releasedate"
+                android:textAlignment="viewStart"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/releasedate"
+                app:layout_constraintStart_toEndOf="@+id/postImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="88dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/budgText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="8dp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@+id/tvotesText"
+                app:layout_constraintTop_toTopOf="@+id/budget" />
+
+            <TextView
+                android:id="@+id/budget"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="5dp"
+                android:text="@string/budget"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/poptext" />
+
+            <TextView
+                android:id="@+id/voteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="5dp"
+                android:text="@string/total_votes"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/budget" />
+
+
+            <TextView
+                android:id="@+id/revenue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="103dp"
+                android:layout_marginTop="8dp"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="5dp"
+                android:text="@string/revenue"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/popTex" />
+
+            <TextView
+                android:id="@+id/poptext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="16dp"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="5dp"
+                android:text="@string/popularity"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/popTex"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/voteavgText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="5dp"
+                android:text="@string/vote_average"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/revenue"
+                app:layout_constraintTop_toBottomOf="@+id/revenue" />
+
+
+            <TextView
+                android:id="@+id/popTex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="8dp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@+id/budgText"
+                app:layout_constraintTop_toTopOf="@+id/poptext" />
+
+            <TextView
+                android:id="@+id/reveText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="8dp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="@+id/avotText"
+                app:layout_constraintStart_toStartOf="@+id/avotText"
+                app:layout_constraintTop_toTopOf="@+id/revenue" />
+
+
+            <TextView
+                android:id="@+id/tvotesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="8dp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toEndOf="@+id/voteText"
+                app:layout_constraintTop_toTopOf="@+id/voteText" />
+
+
+            <TextView
+                android:id="@+id/avotText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="8dp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toEndOf="@+id/voteavgText"
+                app:layout_constraintTop_toTopOf="@+id/voteavgText" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.banjara.dixitjain.filmistan">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.signin.SignIn"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.signin.SignUp"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.home.HomeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FeedbackFragment"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.home.HomeCardView"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.content.ContentActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.content.moviecontent.MoviesFragment"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.content.moviecontent.MovieCardView"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.content.moviecontent.MovieTrailer"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.content.musiccontent.MusicCardView"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.content.musiccontent.MusicContent"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.home.SlideShowImg"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.content.moviecontent.MovieInfo"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.feedbackform.FeedBackForm"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.banjara.dixitjain.filmistan.views.content.moviecontent.VideoActivity"
+            android:label="@string/title_activity_video"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name="com.banjara.dixitjain.filmistan.views.content.moviecontent.MovImg"></activity>
+    </application>
+
+</manifest>

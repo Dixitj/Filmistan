@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#595A55"
+    android:id="@+id/rootLayout"
+    tools:context=".FeedbackFragment">
+
+    <TextView
+        android:id="@+id/bottomText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#5EA1A9"
+        android:textSize="25sp"
+        android:paddingBottom="@dimen/cardview_default_elevation"
+        android:text="@string/feedback_form"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toTopOf="@+id/nameText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="PrivateResource" />
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="84dp"
+        android:text="@string/name"
+        android:textAlignment="center"
+        android:textColor="#68D6E5"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/emailText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/emailText"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/nameText"
+        android:background="#FFF"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:gravity="start"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textColorHint="#000"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/descpText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor" />
+
+
+    <TextView
+        android:id="@+id/descpText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="202dp"
+        android:text="@string/reviews"
+        android:textAlignment="center"
+        android:textColor="#68D6E5"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/reviewText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/reviewText"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/descpText"
+        android:background="#FFF"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:gravity="start"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textColorHint="#000"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/subbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor" />
+
+    <Button
+        android:id="@+id/subbutton"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="149dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</RelativeLayout>
