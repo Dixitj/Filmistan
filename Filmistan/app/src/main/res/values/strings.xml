@@ -40,4 +40,7 @@
     <string name="releasedate">Release Date</string>
     <string name="duration">Duration</string>
     <string name="title_activity_video">VideoActivity</string>
+    <string name="MEmailAddress">Enter Email Address</string>
+    <string name="MEmailandPassword">Please Enter Email address and Passowrd</string>
+    <string name="MDetail">Enter Detials correctly</string>
 </resources>
