@@ -5,15 +5,25 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
-
 import com.banjara.dixitjain.filmistan.R;
 import com.banjara.dixitjain.filmistan.databinding.ActivitySignUpBinding;
+import com.banjara.dixitjain.filmistan.dependencyinjection.AppModule;
+import com.banjara.dixitjain.filmistan.dependencyinjection.Appcomponent;
+import com.banjara.dixitjain.filmistan.dependencyinjection.DaggerAppcomponent;
+
+import javax.inject.Inject;
 
 public class SignUp extends AppCompatActivity {
 
     private ActivitySignUpBinding signUpBinding;
-    private SignUpVm signUpVm;
+    private Appcomponent appcomponent;
+
+
+    @Inject
+    public ISignUpVm signUpVm;
+
+    @Inject
+    public IDisplay display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,28 +32,44 @@ public class SignUp extends AppCompatActivity {
         signUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
         signUpBinding.setSignUp(this);
 
-        signUpVm = new SignUpVm(this);
+        buildComponent().inject(this);
 
     }
 
 
+    private Appcomponent buildComponent() {
+
+        if (appcomponent == null) {
+            appcomponent = DaggerAppcomponent
+                    .builder()
+                    .appModule(new AppModule(this))
+                    .build();
+        }
+
+        return appcomponent;
+    }
+
     public void onSignUpClick(View view){
 
-        String email = signUpBinding.emailText.getText().toString();
-        String password = signUpBinding.passwordText.getText().toString();
-        String confPass = signUpBinding.confirmPasswordText.getText().toString();
 
-        if(email.length() != 0 && password.length() != 0 && password.matches(confPass))
-            signUpVm.signUpHandler(email,password);
+        if(signUpBinding.emailText.getText().toString().length() != 0 &&
+                signUpBinding.passwordText.getText().toString().length() != 0 &&
+                signUpBinding.passwordText.getText().toString().matches(signUpBinding.confirmPasswordText.getText().toString()))
+
+            signUpVm.signUpHandler(signUpBinding.emailText.getText().toString(),
+                                   signUpBinding.confirmPasswordText.getText().toString());
+
         else
-            Toast.makeText(this,"Enter Detials correctly",Toast.LENGTH_LONG).show();
+
+            display.toastDisplay(getString(R.string.MDetail));
 
     }
 
 
     public void onSignInClick(View view){
 
-        signUpVm.screenTransition(new Intent(this, SignIn.class));
+        display.screenTransition(new Intent(this, SignIn.class));
+
     }
 
 
