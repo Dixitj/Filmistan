@@ -5,15 +5,24 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
-
 import com.banjara.dixitjain.filmistan.R;
 import com.banjara.dixitjain.filmistan.databinding.ActivitySignInBinding;
+import com.banjara.dixitjain.filmistan.dependencyinjection.AppModule;
+import com.banjara.dixitjain.filmistan.dependencyinjection.Appcomponent;
+import com.banjara.dixitjain.filmistan.dependencyinjection.DaggerAppcomponent;
+
+import javax.inject.Inject;
 
 public class SignIn extends AppCompatActivity {
 
     private ActivitySignInBinding signInBinding;
-    private SignUpVm signUpVm;
+    private Appcomponent appcomponent;
+
+    @Inject
+    public ISignUpVm signUpVm;
+
+    @Inject
+    public IDisplay display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,42 +30,57 @@ public class SignIn extends AppCompatActivity {
 
         signInBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
         signInBinding.setLogIn(this);
-        signUpVm = new SignUpVm(this);
+
+        buildComponent().inject(this);
+
 
     }
 
 
+    private Appcomponent buildComponent() {
+
+        if (appcomponent == null) {
+            appcomponent = DaggerAppcomponent
+                    .builder()
+                    .appModule(new AppModule(this))
+                    .build();
+        }
+
+        return appcomponent;
+    }
+
     public void onSignInClick(View view) {
 
-        String email = signInBinding.emailAddress.getText().toString();
-        String password = signInBinding.passwordText.getText().toString();
 
-        if (email.length() != 0 && password.length() != 0)
-            signUpVm.signInHandler(email, password);
+        if (signInBinding.emailAddress.getText().toString().length() != 0 &&
+                signInBinding.passwordText.getText().toString().length() != 0)
+
+            signUpVm.signInHandler(signInBinding.emailAddress.getText().toString(),
+                                   signInBinding.passwordText.getText().toString());
 
         else
-            toastDiaplay("Please Enter Email address and Passowrd");
+
+            display.toastDisplay(getString(R.string.MEmailandPassword));
 
     }
 
 
     public void onResetClick(View view) {
 
-        String email = signInBinding.emailAddress.getText().toString();
 
-        if (email.length() != 0)
-            signUpVm.resetPasswordHandler(email);
+        if (signInBinding.emailAddress.getText().toString().length() != 0)
+            signUpVm.resetPasswordHandler(signInBinding.emailAddress.getText().toString());
 
         else
-            toastDiaplay("Enter Email Address");
+
+            display.toastDisplay(getString(R.string.MEmailAddress));
 
     }
 
 
     public void onSignUpClick(View view) {
 
-
-        signUpVm.screenTransition(new Intent(this, SignUp.class));
+        display.screenTransition(new Intent(this, SignUp.class));
 
     }
 
@@ -81,11 +105,5 @@ public class SignIn extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
     }
-
-    private void toastDiaplay(String message) {
-
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
-
 }
 

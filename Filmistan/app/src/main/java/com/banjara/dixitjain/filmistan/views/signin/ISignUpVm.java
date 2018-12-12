@@ -1,6 +1,5 @@
 package com.banjara.dixitjain.filmistan.views.signin;
 
-import android.content.Intent;
 
 public interface ISignUpVm {
 

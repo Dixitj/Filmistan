@@ -8,7 +8,7 @@ public class Display implements IDisplay {
 
     private Context  context;
 
-    Display(Context context){
+    public Display(Context context){
 
         this.context = context;
     }
