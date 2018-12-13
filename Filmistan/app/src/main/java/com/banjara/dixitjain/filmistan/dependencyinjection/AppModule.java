@@ -2,12 +2,10 @@ package com.banjara.dixitjain.filmistan.dependencyinjection;
 
 import android.content.Context;
 
-import com.banjara.dixitjain.filmistan.views.signin.Display;
-import com.banjara.dixitjain.filmistan.views.signin.IDisplay;
+import com.banjara.dixitjain.filmistan.viewdecoration.Display;
+import com.banjara.dixitjain.filmistan.viewdecoration.IDisplay;
 import com.banjara.dixitjain.filmistan.views.signin.ISignUpVm;
 import com.banjara.dixitjain.filmistan.views.signin.SignUpVm;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

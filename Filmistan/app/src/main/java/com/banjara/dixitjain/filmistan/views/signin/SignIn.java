@@ -10,6 +10,7 @@ import com.banjara.dixitjain.filmistan.databinding.ActivitySignInBinding;
 import com.banjara.dixitjain.filmistan.dependencyinjection.AppModule;
 import com.banjara.dixitjain.filmistan.dependencyinjection.Appcomponent;
 import com.banjara.dixitjain.filmistan.dependencyinjection.DaggerAppcomponent;
+import com.banjara.dixitjain.filmistan.viewdecoration.IDisplay;
 
 import javax.inject.Inject;
 
@@ -19,7 +20,7 @@ public class SignIn extends AppCompatActivity {
     private Appcomponent appcomponent;
 
     @Inject
-    public ISignUpVm signUpVm;
+    public ISignUpVm signUpVm ;
 
     @Inject
     public IDisplay display;

@@ -10,6 +10,7 @@ import com.banjara.dixitjain.filmistan.databinding.ActivitySignUpBinding;
 import com.banjara.dixitjain.filmistan.dependencyinjection.AppModule;
 import com.banjara.dixitjain.filmistan.dependencyinjection.Appcomponent;
 import com.banjara.dixitjain.filmistan.dependencyinjection.DaggerAppcomponent;
+import com.banjara.dixitjain.filmistan.viewdecoration.IDisplay;
 
 import javax.inject.Inject;
 
