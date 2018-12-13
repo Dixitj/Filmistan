@@ -3,6 +3,9 @@ package com.banjara.dixitjain.filmistan.views.signin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+
+import com.banjara.dixitjain.filmistan.viewdecoration.Display;
+import com.banjara.dixitjain.filmistan.viewdecoration.IDisplay;
 import com.banjara.dixitjain.filmistan.views.home.HomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -24,7 +27,8 @@ public class SignUpVm implements ISignUpVm{
 
     public void signInHandler(String email, String password) {
 
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener((Activity) context, task -> {
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener((Activity) context, task -> {
             if (task.isSuccessful()) {
 
                 display.screenTransition(new Intent(context, HomeActivity.class));

@@ -60,8 +60,6 @@ public class HomeCardView extends RecyclerView.Adapter<HomeCardView.HomeHolder> 
         Picasso.get().load(image+imageURl.get(i))
                 .resize(800,800)
                 .placeholder(R.drawable.launcher)
-                //.fit()
-                //.centerInside()
                 .into(homeHolder.catImage);
 
         homeHolder.cardView.setOnClickListener(v -> {
