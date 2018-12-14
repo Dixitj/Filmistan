@@ -55,14 +55,12 @@ public class HomeActivity extends AppCompatActivity {
         disposableObserver = new CompositeDisposable();
 
         recyclerView = findViewById(R.id.homeRecycle);
-        mPager = findViewById(R.id.nav_slideshow);
-        //indicator = findViewById(R.id.indicator);
+        //mPager = findViewById(R.id.nav_slideshow);
         recyclerView.setHasFixedSize(true);
         gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
         homeApi = GenerApiUtil.getRetrofit().create(IGener.class);
-        //slideShowScreen();
 
         slideShowScreen();
         homeNetwork();
