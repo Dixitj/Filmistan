@@ -1,10 +1,8 @@
 package com.banjara.dixitjain.filmistan.views.home;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.banjara.dixitjain.filmistan.model.Genre;
+import com.banjara.dixitjain.filmistan.viewdecoration.Display;
+import com.banjara.dixitjain.filmistan.viewdecoration.IDisplay;
 import com.banjara.dixitjain.filmistan.views.content.ContentActivity;
 import com.banjara.dixitjain.filmistan.R;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -28,13 +26,13 @@ public class HomeCardView extends RecyclerView.Adapter<HomeCardView.HomeHolder> 
     private List<Genre> moviesGener ;
     private Context context;
     private  List<String> imageURl = new ArrayList<>();
-
-    public HomeCardView(){}
+    private IDisplay display;
 
     HomeCardView(List<Genre> moviesGener, Context context){
 
         this.moviesGener = moviesGener;
         this.context = context;
+        display = new Display(context);
 
     }
 
@@ -57,7 +55,8 @@ public class HomeCardView extends RecyclerView.Adapter<HomeCardView.HomeHolder> 
         final String image = "https://image.tmdb.org/t/p/w342";
 
         homeHolder.title.setText(moviesGener.get(i).getName());
-        Picasso.get().load(image+imageURl.get(i))
+        Picasso.get()
+                .load(image+imageURl.get(i))
                 .resize(800,800)
                 .placeholder(R.drawable.launcher)
                 .into(homeHolder.catImage);
@@ -67,12 +66,17 @@ public class HomeCardView extends RecyclerView.Adapter<HomeCardView.HomeHolder> 
             Intent intent = new Intent(context,ContentActivity.class);
             intent.putExtra("GENER_TYPE", moviesGener.get(i).getId().toString());
             intent.putExtra("image_URL", image+imageURl.get(i));
+
+             display.ontTransition(intent,
+                                   homeHolder.catImage,
+                                   Objects.requireNonNull(ViewCompat.getTransitionName(homeHolder.catImage)));
+            /*
             ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
                     .makeSceneTransitionAnimation((Activity) context
                             ,homeHolder.catImage ,
-                            Objects.requireNonNull(ViewCompat.getTransitionName(homeHolder.catImage)));
+                            Objects.requireNonNull(ViewCompat.getTransitionName(homeHolder.catImage)));*/
 
-            context.startActivity(intent,optionsCompat.toBundle());
+          //  context.startActivity(intent,optionsCompat.toBundle());
 
         });
     }

@@ -9,5 +9,4 @@ public interface ISignUpVm {
 
     void resetPasswordHandler(String email);
 
-
 }
