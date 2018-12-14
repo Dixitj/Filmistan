@@ -93,4 +93,6 @@ public class SignUpVm implements ISignUpVm{
         AlertDialog display = aletBox.create();
         display.show();
     }
+
+
 }
