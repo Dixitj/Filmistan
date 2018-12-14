@@ -1,12 +1,12 @@
 package com.banjara.dixitjain.filmistan.viewdecoration;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.banjara.dixitjain.filmistan.views.home.HomeActivity;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class Display implements IDisplay {
 
@@ -31,5 +31,12 @@ public class Display implements IDisplay {
 
     }
 
+    @Override
+    public void ontTransition(Intent intent, ImageView imageView, String transitionName) {
+
+        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,imageView, transitionName);
+
+        context.startActivity(intent,optionsCompat.toBundle());
+    }
 
 }
