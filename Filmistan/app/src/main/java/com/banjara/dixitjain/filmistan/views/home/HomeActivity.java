@@ -6,8 +6,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
@@ -20,7 +18,9 @@ import com.banjara.dixitjain.filmistan.R;
 import com.banjara.dixitjain.filmistan.databinding.ActivityHomeBinding;
 import com.banjara.dixitjain.filmistan.model.MovieResult;
 import com.banjara.dixitjain.filmistan.views.feedbackform.FeedBackForm;
-import com.google.firebase.auth.FirebaseAuth;
+import com.banjara.dixitjain.filmistan.views.signin.ISignUpVm;
+import com.banjara.dixitjain.filmistan.views.signin.SignIn;
+import com.banjara.dixitjain.filmistan.views.signin.SignUpVm;
 import java.util.Timer;
 import java.util.TimerTask;
 import io.reactivex.Observable;
@@ -32,36 +32,28 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class HomeActivity extends AppCompatActivity {
 
-    //private RecyclerView recyclerView;
     private CompositeDisposable disposableObserver;
     private IGener homeApi;
-    private ViewPager mPager;
     ActivityHomeBinding homeBinding;
-    GridLayoutManager gridLayoutManager;
     int currentPage = 0;
     int NUM_PAGES = 0;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        GridLayoutManager gridLayoutManager;
+
         homeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         homeBinding.setHome(this);
 
         disposableObserver = new CompositeDisposable();
 
-<<<<<<< HEAD
-        recyclerView = findViewById(R.id.homeRecycle);
-        //mPager = findViewById(R.id.nav_slideshow);
-        recyclerView.setHasFixedSize(true);
-=======
-        mPager = findViewById(R.id.nav_slideshow);
         homeBinding.homeRecycle.setHasFixedSize(true);
->>>>>>> a610f0edd1cb6e9a94171a025c93112ef955a448
         gridLayoutManager = new GridLayoutManager(this, 2);
         homeBinding.homeRecycle.setLayoutManager(gridLayoutManager);
+
 
         homeApi = GenerApiUtil.getRetrofit().create(IGener.class);
 
@@ -98,7 +90,9 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        signOutProcess();
+
+        ISignUpVm signUpVm = new SignUpVm(this);
+        signUpVm.signOutHandler(disposableObserver, new Intent(this, SignIn.class));
 
     }
 
@@ -122,10 +116,7 @@ public class HomeActivity extends AppCompatActivity {
                             if (generList != null && generList.getGenres().size() != 0) {
 
                                 homeBinding.homeRecycle.setAdapter(new HomeCardView(generList.getGenres(), this));
-                                //recyclerView.setAdapter(new HomeCardView(generList.getGenres(), this));
-
                                 homeBinding.homeRecycle.setItemAnimator(new SlideInUpAnimator());
-                                //recyclerView.setItemAnimator(new SlideInUpAnimator());
 
                             } else {
 
@@ -148,13 +139,10 @@ public class HomeActivity extends AppCompatActivity {
 
                             if (movieResult != null) {
 
-                                //mPager.setAdapter(new SlideShowImg(movieResult.getResults(), getApplicationContext()));
-                                mPager.setAdapter(new SlideShowImg(movieResult.getResults(),HomeActivity.this));
-                                //indicator.setViewPager(mPager);
+                                homeBinding.navSlideshow.setAdapter(new SlideShowImg(movieResult.getResults(), HomeActivity.this));
                                 NUM_PAGES = movieResult.getResults().size();
                             }
                         }));
-
 
 
         // Auto start of viewpager
@@ -163,7 +151,9 @@ public class HomeActivity extends AppCompatActivity {
             if (currentPage == NUM_PAGES - 1) {
                 currentPage = 0;
             }
-            mPager.setCurrentItem(currentPage++, true);
+
+            homeBinding.navSlideshow.setCurrentItem(currentPage++, true);
+            //mPager.setCurrentItem(currentPage++, true);
         };
         Timer swipeTimer = new Timer();
         swipeTimer.schedule(new TimerTask() {
@@ -191,25 +181,5 @@ public class HomeActivity extends AppCompatActivity {
         //to prevent strange behaviours override the pending transitions
         overridePendingTransition(0, 0);
     }
-
-
-    private void signOutProcess(){
-
-
-        AlertDialog.Builder aletBox = new AlertDialog.Builder(this);
-
-        aletBox.setMessage("Are you sure,\n" + "You wanted to SignOut?").setPositiveButton("Yes", (dialog, which) -> {
-
-            Toast.makeText(getApplicationContext(),"Successfully Logged Out!", Toast.LENGTH_LONG).show();
-            FirebaseAuth.getInstance().signOut();
-            disposableObserver.clear();
-            HomeActivity.this.finish();
-
-        }).setNegativeButton("No", (dialog, which) -> dialog.cancel());
-
-        AlertDialog display = aletBox.create();
-        display.show();
-    }
-
 
 }

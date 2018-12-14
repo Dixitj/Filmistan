@@ -70,13 +70,6 @@ public class HomeCardView extends RecyclerView.Adapter<HomeCardView.HomeHolder> 
              display.ontTransition(intent,
                                    homeHolder.catImage,
                                    Objects.requireNonNull(ViewCompat.getTransitionName(homeHolder.catImage)));
-            /*
-            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
-                    .makeSceneTransitionAnimation((Activity) context
-                            ,homeHolder.catImage ,
-                            Objects.requireNonNull(ViewCompat.getTransitionName(homeHolder.catImage)));*/
-
-          //  context.startActivity(intent,optionsCompat.toBundle());
 
         });
     }
