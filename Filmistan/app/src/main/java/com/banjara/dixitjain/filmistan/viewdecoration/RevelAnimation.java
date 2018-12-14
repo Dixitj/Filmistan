@@ -1,25 +1,31 @@
 package com.banjara.dixitjain.filmistan.viewdecoration;
 
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 
+import com.banjara.dixitjain.filmistan.views.feedbackform.FeedBackForm;
+
 public class RevelAnimation {
 
-    public static final String EXTRA_CIRCULAR_REVEAL_X = "EXTRA_CIRCULAR_REVEAL_X";
-    public static final String EXTRA_CIRCULAR_REVEAL_Y = "EXTRA_CIRCULAR_REVEAL_Y";
+    private static final String EXTRA_CIRCULAR_REVEAL_X = "EXTRA_CIRCULAR_REVEAL_X";
+    private static final String EXTRA_CIRCULAR_REVEAL_Y = "EXTRA_CIRCULAR_REVEAL_Y";
 
     private final View mView;
     private Activity mActivity;
 
     private int revealX;
     private int revealY;
+
+    public RevelAnimation(View mView){
+        this.mView = mView;
+    }
 
     public RevelAnimation(View view, Intent intent, Activity activity) {
         mView = view;
@@ -66,6 +72,21 @@ public class RevelAnimation {
         } else {
             mActivity.finish();
         }
+    }
+
+
+    public void startRevealActivity() {
+
+        int revealX = (int) (mView.getX() + mView.getWidth() / 2);
+        int revealY = (int) (mView.getY() + mView.getHeight() / 2);
+
+        //create an intent, that launches the second activity and pass the x and y coordinates
+        Intent intent = new Intent(mView.getContext(), FeedBackForm.class);
+        intent.putExtra(RevelAnimation.EXTRA_CIRCULAR_REVEAL_X, revealX);
+        intent.putExtra(RevelAnimation.EXTRA_CIRCULAR_REVEAL_Y, revealY);
+
+        ActivityCompat.startActivity(mView.getContext(),intent,null);
+
     }
 
 

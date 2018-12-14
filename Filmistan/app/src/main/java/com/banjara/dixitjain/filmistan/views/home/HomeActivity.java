@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
@@ -17,7 +16,6 @@ import com.banjara.dixitjain.filmistan.viewdecoration.RevelAnimation;
 import com.banjara.dixitjain.filmistan.R;
 import com.banjara.dixitjain.filmistan.databinding.ActivityHomeBinding;
 import com.banjara.dixitjain.filmistan.model.MovieResult;
-import com.banjara.dixitjain.filmistan.views.feedbackform.FeedBackForm;
 import com.banjara.dixitjain.filmistan.views.signin.ISignUpVm;
 import com.banjara.dixitjain.filmistan.views.signin.SignIn;
 import com.banjara.dixitjain.filmistan.views.signin.SignUpVm;
@@ -37,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     ActivityHomeBinding homeBinding;
     int currentPage = 0;
     int NUM_PAGES = 0;
-
+    //SignUpVm signUpVm = new SignUpVm(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +76,8 @@ public class HomeActivity extends AppCompatActivity {
 
     public void fabClick(View view) {
 
-        startRevealActivity(view);
+        RevelAnimation revelAnimation = new RevelAnimation(view);
+        revelAnimation.startRevealActivity();
 
     }
 
@@ -165,21 +164,5 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void startRevealActivity(View v) {
-        //calculates the center of the View v you are passing
-        int revealX = (int) (v.getX() + v.getWidth() / 2);
-        int revealY = (int) (v.getY() + v.getHeight() / 2);
-
-        //create an intent, that launches the second activity and pass the x and y coordinates
-        Intent intent = new Intent(this, FeedBackForm.class);
-        intent.putExtra(RevelAnimation.EXTRA_CIRCULAR_REVEAL_X, revealX);
-        intent.putExtra(RevelAnimation.EXTRA_CIRCULAR_REVEAL_Y, revealY);
-
-        //just start the activity as an shared transition, but set the options bundle to null
-        ActivityCompat.startActivity(this, intent, null);
-
-        //to prevent strange behaviours override the pending transitions
-        overridePendingTransition(0, 0);
-    }
 
 }
