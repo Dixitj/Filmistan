@@ -22,9 +22,7 @@ public class SlideShowImg extends PagerAdapter {
    SlideShowImg(List<Result> slideImg, Activity activity){
 
        this.slideImg = slideImg;
-      // this.context = context;
        this.activity = activity;
-      // inflater = LayoutInflater.from(context);
 
    }
 

@@ -10,10 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
-
 import com.banjara.dixitjain.filmistan.model.Gener;
 import com.banjara.dixitjain.filmistan.network.GenerApiUtil;
 import com.banjara.dixitjain.filmistan.network.IGener;
@@ -34,7 +32,7 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
+    //private RecyclerView recyclerView;
     private CompositeDisposable disposableObserver;
     private IGener homeApi;
     private ViewPager mPager;
@@ -54,11 +52,16 @@ public class HomeActivity extends AppCompatActivity {
 
         disposableObserver = new CompositeDisposable();
 
+<<<<<<< HEAD
         recyclerView = findViewById(R.id.homeRecycle);
         //mPager = findViewById(R.id.nav_slideshow);
         recyclerView.setHasFixedSize(true);
+=======
+        mPager = findViewById(R.id.nav_slideshow);
+        homeBinding.homeRecycle.setHasFixedSize(true);
+>>>>>>> a610f0edd1cb6e9a94171a025c93112ef955a448
         gridLayoutManager = new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        homeBinding.homeRecycle.setLayoutManager(gridLayoutManager);
 
         homeApi = GenerApiUtil.getRetrofit().create(IGener.class);
 
@@ -96,7 +99,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         signOutProcess();
-        //return;
 
     }
 
@@ -118,9 +120,12 @@ public class HomeActivity extends AppCompatActivity {
                         .subscribe(generList -> {
 
                             if (generList != null && generList.getGenres().size() != 0) {
-                                recyclerView.setAdapter(new HomeCardView(generList.getGenres(), this));
 
-                                recyclerView.setItemAnimator(new SlideInUpAnimator());
+                                homeBinding.homeRecycle.setAdapter(new HomeCardView(generList.getGenres(), this));
+                                //recyclerView.setAdapter(new HomeCardView(generList.getGenres(), this));
+
+                                homeBinding.homeRecycle.setItemAnimator(new SlideInUpAnimator());
+                                //recyclerView.setItemAnimator(new SlideInUpAnimator());
 
                             } else {
 
@@ -189,6 +194,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void signOutProcess(){
+
 
         AlertDialog.Builder aletBox = new AlertDialog.Builder(this);
 

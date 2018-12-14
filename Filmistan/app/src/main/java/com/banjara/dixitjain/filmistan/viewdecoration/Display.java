@@ -1,8 +1,12 @@
-package com.banjara.dixitjain.filmistan.views.signin;
+package com.banjara.dixitjain.filmistan.viewdecoration;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.widget.ImageView;
 import android.widget.Toast;
+
 
 public class Display implements IDisplay {
 
@@ -26,4 +30,13 @@ public class Display implements IDisplay {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 
     }
+
+    @Override
+    public void ontTransition(Intent intent, ImageView imageView, String transitionName) {
+
+        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,imageView, transitionName);
+
+        context.startActivity(intent,optionsCompat.toBundle());
+    }
+
 }

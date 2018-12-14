@@ -51,7 +51,7 @@ public class RevelAnimation {
         }
     }
 
-    public void revealActivity(int x, int y) {
+    private void revealActivity(int x, int y) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             float finalRadius = (float) (Math.max(mView.getWidth(), mView.getHeight()) * 1.1);
 
@@ -68,21 +68,6 @@ public class RevelAnimation {
         }
     }
 
-    public void unRevealActivity() {
-            float finalRadius = (float) (Math.max(mView.getWidth(), mView.getHeight()) * 1.1);
-            Animator circularReveal = ViewAnimationUtils.createCircularReveal(
-                    mView, revealX, revealY, finalRadius, 0);
 
-            circularReveal.setDuration(300);
-            circularReveal.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mView.setVisibility(View.INVISIBLE);
-                    mActivity.finish();
-                    mActivity.overridePendingTransition(0, 0);
-                }
-            });
 
-            circularReveal.start();
-        }
-    }
+}
